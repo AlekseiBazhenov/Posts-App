@@ -17,7 +17,7 @@ class PostActivity : AppCompatActivity() {
 
         val content = intent.extras?.getString(EXTRA_POST)
 
-        webView.loadData(content, "text/html; charset=utf-8", "UTF-8")
+        content?.let { webView.loadData(it, "text/html; charset=utf-8", "UTF-8") }
     }
 
     override fun onSupportNavigateUp(): Boolean {
