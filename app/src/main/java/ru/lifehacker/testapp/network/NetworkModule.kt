@@ -15,12 +15,10 @@ import javax.inject.Singleton
 object NetworkModule {
 
     @Provides
-    @Singleton
     fun provideLifeHackerApi(retrofit: Retrofit): LifeHackerApi =
         retrofit.create(LifeHackerApi::class.java)
 
     @Provides
-    @Singleton
     fun provideRetrofit(baseUrl: String, httpClient: OkHttpClient): Retrofit = Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create())
         .client(httpClient)
@@ -31,16 +29,15 @@ object NetworkModule {
     fun providesBaseUrl(): String = "https://lifehacker.ru/api/"
 
     @Provides
-    @Singleton
     fun provideHttpClient(logging: HttpLoggingInterceptor) = OkHttpClient.Builder()
         .apply {
             addInterceptor(logging)
         }.build()
 
     @Provides
-    @Singleton
     fun provideHttpLogging() = HttpLoggingInterceptor()
         .apply {
             setLevel(HttpLoggingInterceptor.Level.BODY)
         }
+
 }

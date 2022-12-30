@@ -2,18 +2,31 @@ package ru.lifehacker.testapp.network.response
 
 import com.google.gson.annotations.SerializedName
 
-// todo add full data from response
 data class Post(
     @SerializedName("id")
     val id: Long,
     @SerializedName("date")
     val date: String,
+    @SerializedName("date_gmt")
+    val dateGmt: String,
+    @SerializedName("modified")
+    val modified: String,
+    @SerializedName("modified_gmt")
+    val modifiedGmt: String,
     @SerializedName("title")
     val title: Title,
     @SerializedName("content")
     val content: Content,
     @SerializedName("cat_cover")
-    val catCover: CatCover
+    val catCover: CatCover,
+    @SerializedName("author")
+    val authorId: Long,
+    @SerializedName("author_name")
+    val authorName: String,
+    @SerializedName("categories")
+    val categories: List<Int>,
+    @SerializedName("tags")
+    val tags: List<Int>
 ) {
     data class Content(
         @SerializedName("rendered")
