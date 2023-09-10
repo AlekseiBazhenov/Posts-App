@@ -1,5 +1,6 @@
 package ru.lifehacker.testapp.screens
 
+import android.util.Log
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -20,13 +21,16 @@ class PostsViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             repository.load().collect { response ->
-                when (response) {
-                    is Result.Success<List<Post>> -> {
-                        _uiState.value =
-                            _uiState.value.copy(isLoading = false, posts = response.data!!)
-                    }
-                    is Result.Failure -> {}
-                }
+                Log.d("", "")
+//                when (response) {
+//                    is Result.Success<List<Post>> -> {
+//                        _uiState.value =
+//                            _uiState.value.copy(isLoading = false, posts = response.data!!)
+//                    }
+//                    is Result.Failure -> {
+//                        Log.e("PostsViewModel", response.e.toString())
+//                    }
+//                }
             }
         }
     }
